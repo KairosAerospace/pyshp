@@ -368,8 +368,14 @@ class Reader:
         if shapeType == 11:
             record.z = unpack("<d", f.read(8))
         # Read a single M value
-        # if shapeType in (11,21):
-        #     record.m = unpack("<d", f.read(8))
+        if shapeType in (11,21):
+            while shapeType == 11 or shapeType == 21:
+                try:
+                    record.m = unpack("<d", f.read(8))
+                    break
+                except error:
+                    print("Shapefile does not have an 'm' value")
+                    break
         # Seek to the end of this record as defined by the record header because
         # the shapefile spec doesn't require the actual content to meet the header
         # definition.  Probably allowed for lazy feature deletion.
