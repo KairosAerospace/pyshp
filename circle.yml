@@ -6,12 +6,10 @@ machine:
    version: 3.5.1
 dependencies:
   pre:
-    - pip install wheel
+    - pip install twine wheel
 deployment:
   production:
     branch: master
     commands:
       - python setup.py sdist bdist_wheel
-      - twine upload -u $KAIROS_ARTIFACTORY_PUBLISH_USER
-        -p $KAIROS_ARTIFACTORY_PUBLISH_API_KEY
-        -r artifactory-python3 --config-file ./.pypirc ./dist/*
+      - twine upload -u $KAIROS_ARTIFACTORY_PUBLISH_USER -p $KAIROS_ARTIFACTORY_PUBLISH_API_KEY -r artifactory-python3 --config-file ./.pypirc ./dist/*
