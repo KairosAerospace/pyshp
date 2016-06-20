@@ -4,6 +4,9 @@ machine:
     - sudo dpkg -i circle-pyenv-python-3.5.1_1.0_amd64.deb
   python:
    version: 3.5.1
+dependencies:
+  pre:
+    - pip install wheel
 deployment:
   production:
     branch: master
