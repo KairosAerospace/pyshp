@@ -7,6 +7,9 @@ machine:
 dependencies:
   pre:
     - pip install twine wheel
+test:
+  override:
+    - echo "no tests"
 deployment:
   production:
     branch: master
